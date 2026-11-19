@@ -1,5 +1,1 @@
-[
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
-]
+[{"file":"1-cover.jpg","note":"Tracker with seeded progress (13 of 55 earned, counters part-way), spoiler setting ON, detail pane open on The Shootist showing its guide, progress counter and named sources","path":"/#/tracker","viewport":{"height":800,"width":1280}},{"file":"2-roadmap.jpg","note":"Roadmap to the platinum: six stages in order with hour estimates, the point-of-no-return callout for the final mission, and per-stage progress","path":"/#/roadmap","viewport":{"height":800,"width":1280}},{"file":"3-missables.jpg","note":"Missables page: the three missable-risk trophies flagged from their official descriptions, with the flag method stated honestly","path":"/#/missables","viewport":{"height":800,"width":1280}},{"file":"4-silvers.jpg","note":"Tracker filtered to silver grade with the spoiler setting OFF, so all six silver trophies show their official names, descriptions, grades and counters","path":"/#/tracker","viewport":{"height":800,"width":1280}}]
