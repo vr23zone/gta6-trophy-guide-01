@@ -1,1 +1,5 @@
-[{"file":"1-cover.jpg","note":"Checklist grouped by roadmap stage with The Shootist selected: guide, sources and the 19/42 counter in the detail pane; 13 of 55 earned in the header.","view":"guide","viewport":{"height":800,"width":1280}},{"file":"2-roadmap.jpg","note":"The five-stage roadmap with per-stage progress and trophy chips.","view":"roadmap","viewport":{"height":800,"width":1280}},{"file":"3-missables.jpg","note":"The one potentially missable trophy, Positive Mental Attitude, with the Chapter 1 warning and the run-protection panel.","view":"missables","viewport":{"height":800,"width":1280}},{"file":"4-story-spoilers.jpg","kind":"story","note":"Story filter with the spoiler setting on: unearned story trophies blurred, earned ones readable.","view":"guide","viewport":{"height":800,"width":1280}}]
+[
+  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
+  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
+  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
+]

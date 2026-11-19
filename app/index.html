@@ -3,101 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Platinum Atlas — GTA VI Trophy Guide &amp; Tracker</title>
+<title>GTA VI trophy checklist</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header id="masthead">
-  <div class="brand">
-    <p class="kicker">Grand Theft Auto VI · PlayStation 5 · Offline guide &amp; tracker</p>
-    <h1>Leonida Platinum Atlas</h1>
-    <p class="tagline">All 55 official trophies, a guide to each that names its sources, a five-stage roadmap to the platinum, and a tracker that saves in your browser.</p>
-  </div>
-  <div class="scoreboard" aria-label="Progress summary">
-    <p class="big-count"><span id="earned-count">0</span><span class="of"> / 55 earned</span></p>
-    <div class="meter" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="meter"><div id="meter-fill"></div></div>
-    <p class="tallies" id="grade-tallies"></p>
-    <p class="to-platinum" id="to-platinum"></p>
-  </div>
+<header>
+  <h1>GTA VI trophy checklist</h1>
+  <p id="progress">0 of 55 earned</p>
 </header>
-
-<nav id="tabs" aria-label="Guide sections">
-  <button type="button" class="tab is-active" data-view="guide">Guide &amp; tracker</button>
-  <button type="button" class="tab" data-view="roadmap">Roadmap to platinum</button>
-  <button type="button" class="tab" data-view="missables">Missables</button>
-  <button type="button" class="tab" data-view="sources">Sources &amp; about</button>
-</nav>
-
-<main>
-  <section id="view-guide" class="view">
-    <div id="toolbar">
-      <input id="search" type="search" placeholder="Search trophies…  ( / )" aria-label="Search trophies">
-      <div id="kind-chips" role="group" aria-label="Filter by kind"></div>
-      <label class="ctl">Grade
-        <select id="grade-filter">
-          <option value="all">All grades</option>
-          <option value="platinum">Platinum</option>
-          <option value="gold">Gold</option>
-          <option value="silver">Silver</option>
-          <option value="bronze">Bronze</option>
-        </select>
-      </label>
-      <label class="ctl">Status
-        <select id="status-filter">
-          <option value="all">All</option>
-          <option value="earned">Earned</option>
-          <option value="unearned">Not yet</option>
-        </select>
-      </label>
-      <label class="ctl check"><input id="spoiler-toggle" type="checkbox" checked> Hide story spoilers</label>
-      <span class="spacer"></span>
-      <button type="button" id="export-btn">Export progress</button>
-      <label class="ctl file-btn">Import progress <input id="import-file" type="file" accept="application/json"></label>
-      <button type="button" id="reset-btn">Reset</button>
-    </div>
-    <p id="list-summary" class="list-summary"></p>
-    <div id="layout">
-      <div id="trophy-list" aria-label="Trophy list"></div>
-      <article id="trophy-detail" aria-label="Trophy guide"></article>
-    </div>
-  </section>
-
-  <section id="view-roadmap" class="view" hidden>
-    <h2>Roadmap to the platinum</h2>
-    <p class="lede">Five stages, in the order the launch roadmap supports: story first with the counters running, strands as cleanup, and the 100% checklist last. Stage times are our split of PowerPyx's published totals (story 60–80 hours, checklist about 100, cleanup about 10 — roughly 200 hours in all, difficulty 4/10). One warning rides on Stage 1: the Chapter 1 meditation.</p>
-    <div id="roadmap-stages"></div>
-  </section>
-
-  <section id="view-missables" class="view" hidden>
-    <h2>Missable trophies</h2>
-    <p class="lede">Exactly one trophy is flagged as potentially missable by the launch guides — and even that one is a “potentially”. Everything else on the list can be earned in the endgame.</p>
-    <div id="missable-cards"></div>
-    <div class="panel" id="run-protection">
-      <h3>Protect the run</h3>
-      <ul>
-        <li><strong>Do the Chapter 1 meditation.</strong> After Down to Earth, talk to Lucia in the kitchen at Jason's house in the morning, follow her to the balcony and choose Accept. Two minutes, and the only flagged risk on the list is gone.</li>
-        <li><strong>Keep cheats off.</strong> GTABase reports that using cheats disables trophies and saving — a trophy run and a cheat run do not mix.</li>
-        <li><strong>Keep one manual save before the finale.</strong> Nothing is reported to lock at the credits, but a day-one list cannot know everything, and a save slot costs nothing.</li>
-        <li><strong>No story trophy can be missed.</strong> The story is five chapters with no mission replay and no mission medals; chapter and mission trophies land as you finish them (PowerPyx).</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="view-sources" class="view" hidden>
-    <h2>Sources &amp; about</h2>
-    <p class="lede" id="about-text"></p>
-    <div id="source-list"></div>
-    <div class="panel">
-      <h3>How this guide was built</h3>
-      <p>The official names, descriptions and grades are shown exactly as PlayStation publishes them — those are the exception to every guide-writing rule. Everything written as a guide is our own words, and where a method rests on a launch guide we name it beside the trophy; where no source has pinned a method down yet, the guide says that instead of inventing steps. The official list contains no online trophies, so there is no Online filter: all 55 can be earned offline. Progress is stored only in this browser (localStorage) and never leaves the device; export and import move it as a JSON file.</p>
-    </div>
-  </section>
-</main>
-
-<footer id="colophon">
-  <p>Leonida Platinum Atlas — a fan-made, open-source guide. Not affiliated with Rockstar Games or PlayStation. Trophy names and descriptions are the official ones, shown as published.</p>
-</footer>
-
+<div class="controls">
+  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+  <button id="export" type="button">Export progress</button>
+  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+</div>
+<table>
+  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
 <script type="module" src="app.js"></script>
 </body>
 </html>

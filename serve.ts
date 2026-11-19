@@ -1,19 +1,19 @@
-// A small static file server for trying the guide locally: `node serve.ts`
-// serves app/ at http://localhost:8080 (`--port <n>` picks another port).
-// Development convenience only — the guide itself needs no server at all,
-// just a browser opening app/index.html. Nothing here is handed in.
+// A tiny static server for app/ (Node 22, standard library only), so the guide can be run locally without a
+// build step: `node serve.ts` serves app/ on http://localhost:8080 (`--port <n>` for another port). It sends the MIME
+// types a browser needs, refuses any path outside app/, and otherwise does nothing clever: this is a development
+// convenience, not a web server for the internet.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const appRoot = resolve(fileURLToPath(new URL('./app', import.meta.url)));
+const root = resolve(fileURLToPath(new URL('./app', import.meta.url)));
+const args = process.argv.slice(2);
+const portIndex = args.indexOf('--port');
+const requested = portIndex === -1 ? 8080 : Number(args[portIndex + 1]);
+const port = Number.isInteger(requested) && requested > 0 && requested < 65536 ? requested : 8080;
 
-const portFlag = process.argv.indexOf('--port');
-const wanted = portFlag === -1 ? 8080 : Number(process.argv[portFlag + 1]);
-const port = Number.isInteger(wanted) && wanted > 0 && wanted < 65536 ? wanted : 8080;
-
-const CONTENT_TYPES: Record<string, string> = {
+const MIME: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
@@ -30,22 +30,23 @@ const CONTENT_TYPES: Record<string, string> = {
 };
 
 createServer((request, response) => {
+  const url = new URL(request.url ?? '/', 'http://localhost');
   let pathname: string;
   try {
-    pathname = decodeURIComponent(new URL(request.url ?? '/', 'http://localhost').pathname);
+    pathname = decodeURIComponent(url.pathname);
   } catch {
     response.writeHead(400).end('bad request');
     return;
   }
   if (pathname.endsWith('/')) pathname += 'index.html';
-  const filePath = resolve(join(appRoot, normalize(pathname)));
-  if (filePath !== appRoot && !filePath.startsWith(appRoot + sep)) {
+  const file = resolve(join(root, normalize(pathname)));
+  if (file !== root && !file.startsWith(root + sep)) {
     response.writeHead(403).end('forbidden');
     return;
   }
   let size: number;
   try {
-    const stats = statSync(filePath);
+    const stats = statSync(file);
     if (!stats.isFile()) throw new Error('not a file');
     size = stats.size;
   } catch {
@@ -53,11 +54,11 @@ createServer((request, response) => {
     return;
   }
   response.writeHead(200, {
-    'content-type': CONTENT_TYPES[extname(filePath).toLowerCase()] ?? 'application/octet-stream',
+    'content-type': MIME[extname(file).toLowerCase()] ?? 'application/octet-stream',
     'content-length': size,
     'cache-control': 'no-store',
   });
-  createReadStream(filePath).pipe(response);
+  createReadStream(file).pipe(response);
 }).listen(port, '127.0.0.1', () => {
-  console.log(`Leonida Platinum Atlas is being served at http://localhost:${port}`);
+  console.log(`app/ is on http://localhost:${port}`);
 });
