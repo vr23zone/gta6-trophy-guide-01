@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Platinum Guide — GTA VI Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Leonida Platinum Guide</h1>
+    <p class="tagline">Grand Theft Auto VI &middot; PlayStation 5 &middot; all 55 trophies &middot; works offline</p>
+  </div>
+  <div class="progress-box" aria-live="polite">
+    <div class="progress-numbers"><span id="earned-count">0</span><span class="of"> of 55 earned</span></div>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <p id="progress-note" class="progress-note">55 trophies stand between you and the platinum.</p>
+    <p id="grade-counts" class="grade-counts"></p>
+  </div>
+  <label class="spoiler-toggle">
+    <input type="checkbox" id="spoiler-mode" checked>
+    <span>Spoiler mode: hide story trophies until earned</span>
+  </label>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button type="button" class="tab active" data-view="checklist">Checklist &amp; guides</button>
+  <button type="button" class="tab" data-view="roadmap">Roadmap to platinum</button>
+  <button type="button" class="tab" data-view="missables">Missables</button>
+  <button type="button" class="tab" data-view="save">Save &amp; sources</button>
+</nav>
+
+<main>
+  <section id="view-checklist" class="view">
+    <div class="filters" id="filters">
+      <input type="search" id="filter-search" placeholder="Search trophies, missions, places..." aria-label="Search trophies">
+      <div class="kind-buttons" role="group" aria-label="Filter by kind">
+        <button type="button" data-kind="all" class="kind active">All</button>
+        <button type="button" data-kind="story" class="kind">Story</button>
+        <button type="button" data-kind="missable" class="kind">Missable</button>
+        <button type="button" data-kind="collectibles" class="kind">Collectibles</button>
+        <button type="button" data-kind="activities" class="kind">Activities</button>
+        <button type="button" data-kind="online" class="kind">Online</button>
+      </div>
+      <label>Grade
+        <select id="filter-grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label>State
+        <select id="filter-state">
+          <option value="all">All</option>
+          <option value="unearned">Not earned yet</option>
+          <option value="earned">Earned</option>
+        </select>
+      </label>
+      <span id="filter-count" class="filter-count"></span>
+    </div>
+    <div class="layout">
+      <div id="trophy-list" class="trophy-list"></div>
+      <aside id="detail" class="detail-pane" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <div id="roadmap"></div>
+  </section>
+
+  <section id="view-missables" class="view" hidden>
+    <div id="missables"></div>
+  </section>
+
+  <section id="view-save" class="view" hidden>
+    <div id="save-sources"></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>An unofficial, fan-made guide. Not affiliated with Rockstar Games or Take-Two Interactive. Trophy names and
+  descriptions are the official PlayStation text; every guide here is written in our own words and cites its sources.
+  Progress never leaves your browser unless you export it yourself.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
